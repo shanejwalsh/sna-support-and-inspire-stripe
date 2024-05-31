@@ -1,9 +1,7 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
-import { Navbar } from '@/components';
-
-const inter = Inter({ subsets: ['latin'] });
+import { Navbar, MainHeader } from '@/components';
+import { Providers } from '@/providers';
 
 export const metadata: Metadata = {
   title: 'SNA Support and inspire',
@@ -13,9 +11,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Navbar />
-        {children}
+      <body>
+        <Providers>
+          <MainHeader />
+          <Navbar />
+          {children}
+        </Providers>
       </body>
     </html>
   );
